@@ -1,6 +1,18 @@
-var connection = require('./connection.js');
+var connection = require('../config/connection.js');
 
-// object relational mapper (ORM)
+function printQuestionMarks(num){
+    var arr = [];
+
+    for (var i = 0; i < num; i++){
+        arr.push('?');
+    }
+
+    return arr.toString();
+}
+
+function objToSql(ob){
+    arr.push(key + '=' + ob[key]);
+}
 
 var orm = {
     //selectAll: function(tableInput, colToSearch, valOfCol) {
@@ -12,14 +24,14 @@ var orm = {
         });
     },
     insertOne: function(burgerName) {
-    	 var queryString = 'INSERT INTO burgers (burger name, devoured) VALUES (' + burgerName + ',' + 0 + ')';
+    	 var queryString = 'INSERT INTO burgers (burger_name, devoured) VALUES (' + burgerName + ',' + false + ')';
     	 console.log(queryString)
          connection.query(queryString, function(err, result){
          console.log(result);
          });
     },
     updateOne: function(burgerName){
-    	 var queryString = 'UPDATE burgers SET burgerName = ' + burgerName + 'WHERE devoured = 1';
+    	 var queryString = 'UPDATE burgers SET burgerName = ' + burgerName + 'WHERE devoured = true';
          console.log(queryString)
          connection.query(function(err, result){
          console.log(result);
