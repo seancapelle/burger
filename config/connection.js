@@ -1,4 +1,4 @@
-//Connects to MySQL database
+//Connects to MySQL database and export to be used by ORM
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({

@@ -3,12 +3,12 @@
 <h2>Burgers</h2>
 
 <ul>
-  {{#each burger}}
+  {{#each burgers}}
     {{#unless this.devoured}}
       <li>
         {{this.name}}
 
-        <form action="burger/update/{{this.id}}?_method=PUT" method="POST">
+        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="true">
           <button type="submit">EAT IT!</button>
         </form>
@@ -20,12 +20,12 @@
 <h2>Gone burger, gone</h2>
 
 <ul>
-  {{#each burger}}
+  {{#each burgers}}
     {{#if this.devoured}}
       <li>
         {{this.name}}
 
-        <form action="burger/update/{{this.id}}?_method=PUT" method="POST">
+        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="false">
           <button type="submit">EAT IT!</button>
         </form>
@@ -35,18 +35,14 @@
 </ul>
 
 <h2>Add a Burger</h2>
-<form class="create-update-form" action="burger/create" method="POST">
+<form class="create-update-form" action="burgers/create" method="POST">
 
   <div class="form-group">
     <label for="ca">Burger Name:</label>
     <input type="text" id="ca" name="name">
   </div>
 
-  <div class="form-group">
-    <label for="slee">Devoured?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
+
 
   <button type="submit">Add Burger</button>
 </form>

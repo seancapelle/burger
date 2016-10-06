@@ -1,12 +1,14 @@
+//Functions for routing and the logic for each route
+
 var express = require('express');
 var router = express.Router();
 var burger = require('../models/burger.js');
 
 router.get('/', function(req,res){
-	res.redirect('/burger')
+	res.redirect('/burgers')
 });
 
-router.get('/burger', function(req, res){
+router.get('/burgers', function(req, res){
 	burger.all(function(data){
 		var hbsObject = {burger : data}
 		console.log(hbsObject)
@@ -14,28 +16,21 @@ router.get('/burger', function(req, res){
 	});
 });
 
-router.post('/burger/create', function(req, res){
+router.post('/burgers/create', function(req, res){
 	burger.create(['burger_name', 'devoured'], [req.body.name, req.body.devoured], function(data){
-		res.redirect('/burger')
+		res.redirect('/burgers')
 	});
 });
 
-router.put('/burger/update/:id', function(req, res){
+router.put('/burgers/update/:id', function(req, res){
 	var condition = 'id = ' + req.params.id;
 
 	console.log('devoured', devoured);
 
-	burger.update({'devoured' : req.body.devoured}, devoured, function(data){
-		res.redirect('/burger');
+	burger.update({'devoured' : req.body.devoured}, condition, function(data){
+		res.redirect('/burgers');
 	});
 });
 
 module.exports = router;
-
-// Inside the burgers_controller.js file, import the following:
-
-// express
-// method-override
-// body-parser
-// Create the router for the app, and export the router at the end of your file.
 

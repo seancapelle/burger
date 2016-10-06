@@ -12,3 +12,4 @@ CREATE TABLE burgers
 );
 
 
+DROP burgers_db;

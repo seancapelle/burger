@@ -1,26 +1,27 @@
+//Sets up a model for interfacing with MySQL
 
 var orm = require('../config/orm.js');
 
 var burger = {
 	all: function(cb) {
-		orm.all('burger', function(res){
+		orm.all('burgers', function(res){
 			cb(res);
 		});
 	},
 	//cols and vals are arrays
 	create: function(cols, vals, cb) {
-		orm.create('burger', cols, vals, function(res){
+		orm.create('burgers', cols, vals, function(res){
 			cb(res);
 		});
 	},
 
-	update: function(objColVals, devoured, cb) {
-		orm.update('burger', objColVals, devoured, function(res){
+	update: function(objColVals, condition, cb) {
+		orm.update('burgers', objColVals, condition, function(res){
 			cb(res);
 		});
 	}
 };
 
-modules.exports = burger;
+module.exports = burger;
 
 
